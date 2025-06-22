@@ -1,0 +1,316 @@
+<div class="container-fluid">
+  <h1 class="h3 mb-2 text-gray-800">Kelola Produk</h1>
+  <p class="mb-4">Manajemen data untuk semua produk yang dijual.</p>
+
+  <button
+    class="btn btn-primary mb-3"
+    data-bs-toggle="modal"
+    data-bs-target="#tambahProdukModal"
+  >
+    <i class="bi bi-plus-circle me-1"></i> Tambah Produk
+  </button>
+
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <h6 class="m-0 font-weight-bold text-primary">Daftar Produk</h6>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered" width="100%" cellspacing="0">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Jenis</th>
+              <th>Nama Produk</th>
+              <th>Komposisi</th>
+              <th>HPP</th>
+              <th>Harga Jual</th>
+              <th>Aksi</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Makanan</td>
+              <td>Nasi Goreng Spesial</td>
+              <td>Nasi, Telur, Ayam, Bumbu</td>
+              <td>15000</td>
+              <td>25000</td>
+              <td>
+                <button
+                  class="btn btn-warning btn-sm"
+                  title="Edit"
+                  data-bs-toggle="modal"
+                  data-bs-target="#editProdukModal"
+                >
+                  <i class="bi bi-pencil-square"></i>
+                </button>
+                <button
+                  class="btn btn-danger btn-sm"
+                  title="Hapus"
+                  data-bs-toggle="modal"
+                  data-bs-target="#hapusModal"
+                >
+                  <i class="bi bi-trash"></i>
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Minuman</td>
+              <td>Es Teh Manis</td>
+              <td>Teh, Gula, Es Batu</td>
+              <td>2000</td>
+              <td>5000</td>
+              <td>
+                <button
+                  class="btn btn-warning btn-sm"
+                  title="Edit"
+                  data-bs-toggle="modal"
+                  data-bs-target="#editProdukModal"
+                >
+                  <i class="bi bi-pencil-square"></i>
+                </button>
+                <button
+                  class="btn btn-danger btn-sm"
+                  title="Hapus"
+                  data-bs-toggle="modal"
+                  data-bs-target="#hapusModal"
+                >
+                  <i class="bi bi-trash"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="tambahProdukModal" tabindex="-1">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Tambah Produk Baru</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Jenis Produk</label>
+              <select class="form-select">
+                <option selected>Pilih Jenis...</option>
+                <option value="Makanan">Makanan</option>
+                <option value="Minuman">Minuman</option>
+              </select>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Nama Produk</label>
+              <input type="text" class="form-control" required />
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Komposisi</label>
+            <textarea class="form-control" rows="2"></textarea>
+          </div>
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label class="form-label">HPP (Harga Pokok)</label>
+              <input type="number" class="form-control" required />
+            </div>
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Harga Jual</label>
+              <input type="number" class="form-control" required />
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Batal
+        </button>
+        <button type="button" class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="editProdukModal" tabindex="-1">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Edit Produk</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <input type="hidden" id="editProdukId" />
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Jenis Produk</label>
+              <select class="form-select" id="editJenisProduk">
+                <option value="Makanan">Makanan</option>
+                <option value="Minuman">Minuman</option>
+              </select>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Nama Produk</label>
+              <input
+                type="text"
+                class="form-control"
+                id="editNamaProduk"
+                required
+              />
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Komposisi</label>
+            <textarea
+              class="form-control"
+              id="editKomposisi"
+              rows="2"
+            ></textarea>
+          </div>
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label class="form-label">HPP (Harga Pokok)</label>
+              <input type="number" class="form-control" id="editHpp" required />
+            </div>
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Harga Jual</label>
+              <input
+                type="number"
+                class="form-control"
+                id="editHargaJual"
+                required
+              />
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Batal
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          id="simpanPerubahanProdukBtn"
+        >
+          Simpan Perubahan
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="hapusModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Konfirmasi Hapus</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <p>Apakah Anda yakin ingin menghapus data ini?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Tidak
+        </button>
+        <button type="button" class="btn btn-danger">Ya, Hapus</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // --- LOGIKA UNTUK EDIT PRODUK ---
+    const editProdukModal = document.getElementById("editProdukModal");
+    if (editProdukModal) {
+      editProdukModal.addEventListener("show.bs.modal", function (event) {
+        const button = event.relatedTarget;
+        const row = button.closest("tr");
+
+        // Ambil semua data dari setiap sel di baris
+        const id = row.cells[0].textContent;
+        const jenis = row.cells[1].textContent;
+        const nama = row.cells[2].textContent;
+        const komposisi = row.cells[3].textContent;
+        const hpp = row.cells[4].textContent;
+        const hargaJual = row.cells[5].textContent;
+
+        // Masukkan data ke dalam form di modal edit
+        document.getElementById("editProdukId").value = id;
+        document.getElementById("editJenisProduk").value = jenis;
+        document.getElementById("editNamaProduk").value = nama;
+        document.getElementById("editKomposisi").value = komposisi;
+        document.getElementById("editHpp").value = hpp;
+        document.getElementById("editHargaJual").value = hargaJual;
+
+        // Simpan referensi baris tabel untuk pembaruan nanti
+        editProdukModal.dataset.rowIndex = row.rowIndex;
+      });
+
+      const simpanBtn = document.getElementById("simpanPerubahanProdukBtn");
+      simpanBtn.addEventListener("click", function () {
+        const rowIndex = editProdukModal.dataset.rowIndex;
+
+        // Ambil nilai baru dari form
+        const jenisBaru = document.getElementById("editJenisProduk").value;
+        const namaBaru = document.getElementById("editNamaProduk").value;
+        const komposisiBaru = document.getElementById("editKomposisi").value;
+        const hppBaru = document.getElementById("editHpp").value;
+        const hargaJualBaru = document.getElementById("editHargaJual").value;
+
+        // Update data di tabel secara visual
+        const table = document.querySelector(".table");
+        const rowToUpdate = table.rows[rowIndex];
+        rowToUpdate.cells[1].textContent = jenisBaru;
+        rowToUpdate.cells[2].textContent = namaBaru;
+        rowToUpdate.cells[3].textContent = komposisiBaru;
+        rowToUpdate.cells[4].textContent = hppBaru;
+        rowToUpdate.cells[5].textContent = hargaJualBaru;
+
+        // Tutup modal
+        const modalInstance = bootstrap.Modal.getInstance(editProdukModal);
+        modalInstance.hide();
+      });
+    }
+
+    // --- LOGIKA UNTUK HAPUS (Reusable) ---
+    const hapusModal = document.getElementById("hapusModal");
+    if (hapusModal) {
+      let rowToDelete = null;
+
+      hapusModal.addEventListener("show.bs.modal", function (event) {
+        rowToDelete = event.relatedTarget.closest("tr");
+      });
+
+      const yaHapusBtn = hapusModal.querySelector(".btn-danger");
+      yaHapusBtn.addEventListener("click", function () {
+        if (rowToDelete) {
+          rowToDelete.remove();
+          rowToDelete = null;
+        }
+        const modalInstance = bootstrap.Modal.getInstance(hapusModal);
+        modalInstance.hide();
+      });
+    }
+  });
+</script>

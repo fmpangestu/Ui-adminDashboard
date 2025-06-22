@@ -1,0 +1,174 @@
+/* css/sidebar.css */
+
+/* -- VARIABEL WARNA (agar mudah diubah) -- */
+:root {
+  --primary-color: #1e40af;
+  --secondary-color: #3b82f6;
+  --text-color: #ffffff;
+  --hover-bg: rgba(255, 255, 255, 0.15);
+  --active-bg: rgba(255, 255, 255, 0.3);
+  --sidebar-width: 250px;
+  --sidebar-width-collapsed: 80px;
+}
+
+/* -- STYLE DASAR SIDEBAR -- */
+.sidebar {
+  width: var(--sidebar-width);
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: linear-gradient(
+    180deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
+  color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+  transition: width 0.3s ease-in-out;
+  z-index: 1000;
+  overflow-x: hidden;
+}
+
+/* -- HEADER SIDEBAR (LOGO & TOGGLE) -- */
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.25rem;
+  height: 60px;
+}
+.sidebar-logo {
+  color: var(--text-color);
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  left: 10px;
+  position: relative;
+}
+.sidebar-toggle-btn {
+  background: white;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  border: none;
+  color: var(--primary-color);
+  cursor: pointer;
+  font-size: 0.8rem;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  position: relative;
+  top: 40px;
+  right: 14px;
+}
+.sidebar-toggle-btn:hover {
+  background-color: var(--hover-bg);
+}
+
+/* -- NAVIGASI -- */
+.sidebar-nav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex-grow: 1; /* Membuat nav mengisi ruang kosong */
+  margin-top: 1rem;
+}
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.9rem 1.25rem;
+  margin: 0.2rem 0.5rem;
+  color: var(--text-color);
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background-color 0.2s;
+  white-space: nowrap; /* Mencegah teks turun baris */
+}
+.nav-link:hover {
+  background-color: var(--hover-bg);
+}
+.nav-link.active {
+  background-color: var(--active-bg);
+  font-weight: 500;
+}
+.nav-link i {
+  font-size: 1.2rem;
+}
+
+/* -- FOOTER (LOGOUT) -- */
+.sidebar-footer {
+  padding: 0.2rem;
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* -- STYLE SAAT SIDEBAR DICCIUTKAN (COLLAPSED) -- */
+.sidebar.collapsed {
+  width: var(--sidebar-width-collapsed);
+}
+.sidebar.collapsed .logo-text,
+.sidebar.collapsed .nav-text {
+  opacity: 0;
+  width: 0;
+  display: none; /* Sembunyikan teks */
+}
+.sidebar.collapsed .nav-link {
+  justify-content: center; /* Ikon jadi di tengah */
+  gap: 0;
+}
+.sidebar.collapsed .sidebar-logo {
+  justify-content: center;
+}
+.sidebar.collapsed .sidebar-toggle-btn i {
+  transform: rotate(180deg); /* Putar ikon panah */
+}
+/* css/sidebar.css */
+
+/* Style untuk wrapper konten utama (SUDAH DIPERBAIKI) */
+.main-wrapper {
+  /* Atur posisi dan lebar awal */
+  margin-left: var(--sidebar-width);
+  width: calc(100% - var(--sidebar-width));
+  transition: margin-left 0.3s ease-in-out, width 0.3s ease-in-out;
+}
+
+/* Aturan ini berlaku JIKA sidebar diciutkan */
+body.sidebar-collapsed .main-wrapper {
+  /* Atur ulang posisi dan lebar saat ciut */
+  margin-left: var(--sidebar-width-collapsed);
+  width: calc(100% - var(--sidebar-width-collapsed));
+  /* Warna latar belakang tetap sama */
+}
+
+/* Aturan untuk mobile */
+@media (max-width: 768px) {
+  .main-wrapper {
+    /* Di mobile, penuhi seluruh layar */
+    margin-left: 0;
+    width: 100%;
+  }
+}
+/* -- RESPONSIF UNTUK MOBILE -- */
+@media (max-width: 768px) {
+  .sidebar {
+    /* Sembunyikan sidebar di luar layar secara default */
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+  }
+  /* Kelas .open akan memunculkan sidebar */
+  .sidebar.open {
+    transform: translateX(0);
+    width: 100%; /* Lebar penuh di mobile */
+  }
+  .sidebar-toggle-btn {
+    display: none; /* Sembunyikan tombol toggle di mobile */
+  }
+}

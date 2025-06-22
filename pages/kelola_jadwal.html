@@ -1,0 +1,382 @@
+<div class="container-fluid">
+  <h1 class="h3 mb-2 text-gray-800">Kelola Jadwal</h1>
+  <p class="mb-4">Manajemen data untuk jadwal shift mingguan karyawan.</p>
+
+  <button
+    class="btn btn-primary mb-3"
+    data-bs-toggle="modal"
+    data-bs-target="#tambahJadwalModal"
+  >
+    <i class="bi bi-calendar-plus me-1"></i> Tambah Jadwal Karyawan
+  </button>
+
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <h6 class="m-0 font-weight-bold text-primary">Jadwal Minggu Ini</h6>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table
+          id="scheduleTable"
+          class="table table-bordered text-center"
+          width="100%"
+          cellspacing="0"
+        >
+          <thead>
+            <tr>
+              <th>No</th>
+              <th>Nama</th>
+              <th>Senin</th>
+              <th>Selasa</th>
+              <th>Rabu</th>
+              <th>Kamis</th>
+              <th>Jumat</th>
+              <th>Sabtu</th>
+              <th>Minggu</th>
+              <th>Aksi</th>
+            </tr>
+          </thead>
+          <tbody id="scheduleTableBody">
+            <tr>
+              <td>1</td>
+              <td>Barista 1</td>
+              <td>P</td>
+              <td>P</td>
+              <td>P</td>
+              <td>S</td>
+              <td>S</td>
+              <td>L</td>
+              <td>L</td>
+              <td>
+                <button
+                  class="btn btn-warning btn-sm"
+                  title="Edit"
+                  data-bs-toggle="modal"
+                  data-bs-target="#editJadwalModal"
+                >
+                  <i class="bi bi-pencil-square"></i>
+                </button>
+                <button
+                  class="btn btn-danger btn-sm"
+                  title="Hapus"
+                  data-bs-toggle="modal"
+                  data-bs-target="#hapusModal"
+                >
+                  <i class="bi bi-trash"></i>
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Kasir 1</td>
+              <td>S</td>
+              <td>S</td>
+              <td>L</td>
+              <td>L</td>
+              <td>P</td>
+              <td>P</td>
+              <td>P</td>
+              <td>
+                <button
+                  class="btn btn-warning btn-sm"
+                  title="Edit"
+                  data-bs-toggle="modal"
+                  data-bs-target="#editJadwalModal"
+                >
+                  <i class="bi bi-pencil-square"></i>
+                </button>
+                <button
+                  class="btn btn-danger btn-sm"
+                  title="Hapus"
+                  data-bs-toggle="modal"
+                  data-bs-target="#hapusModal"
+                >
+                  <i class="bi bi-trash"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="tambahJadwalModal" tabindex="-1">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Tambah Jadwal Karyawan Baru</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form id="tambahJadwalForm">
+          <div class="mb-3">
+            <label class="form-label">Nama Karyawan</label>
+            <select class="form-select" id="tambahNamaKaryawan">
+              <option selected>Pilih Karyawan...</option>
+              <option>Barista 2</option>
+              <option>Kasir 2</option>
+              <option>Chef 1</option>
+              <option>Chef 2</option>
+            </select>
+          </div>
+          <hr />
+          <h6>Atur Jadwal Mingguan:</h6>
+          <div class="row text-center">
+            <div class="col">
+              <label class="form-label">Senin</label
+              ><select class="form-select">
+                <option value="P">Pagi</option>
+                <option value="S">Sore</option>
+                <option value="L">Libur</option>
+              </select>
+            </div>
+            <div class="col">
+              <label class="form-label">Selasa</label
+              ><select class="form-select">
+                <option value="P">Pagi</option>
+                <option value="S">Sore</option>
+                <option value="L">Libur</option>
+              </select>
+            </div>
+            <div class="col">
+              <label class="form-label">Rabu</label
+              ><select class="form-select">
+                <option value="P">Pagi</option>
+                <option value="S">Sore</option>
+                <option value="L">Libur</option>
+              </select>
+            </div>
+            <div class="col">
+              <label class="form-label">Kamis</label
+              ><select class="form-select">
+                <option value="P">Pagi</option>
+                <option value="S">Sore</option>
+                <option value="L">Libur</option>
+              </select>
+            </div>
+            <div class="col">
+              <label class="form-label">Jumat</label
+              ><select class="form-select">
+                <option value="P">Pagi</option>
+                <option value="S">Sore</option>
+                <option value="L">Libur</option>
+              </select>
+            </div>
+            <div class="col">
+              <label class="form-label">Sabtu</label
+              ><select class="form-select">
+                <option value="L">Libur</option>
+                <option value="P">Pagi</option>
+                <option value="S">Sore</option>
+              </select>
+            </div>
+            <div class="col">
+              <label class="form-label">Minggu</label
+              ><select class="form-select">
+                <option value="L">Libur</option>
+                <option value="P">Pagi</option>
+                <option value="S">Sore</option>
+              </select>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Batal
+        </button>
+        <button type="button" class="btn btn-primary" id="submitJadwalBtn">
+          Submit
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="editJadwalModal" tabindex="-1">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Edit Jadwal Karyawan</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <input type="hidden" id="editJadwalRowIndex" />
+          <div class="mb-3">
+            <label class="form-label">Nama Karyawan</label>
+            <input
+              type="text"
+              class="form-control"
+              id="editNamaKaryawan"
+              disabled
+            />
+          </div>
+          <hr />
+          <h6>Ubah Jadwal Mingguan:</h6>
+          <div class="row text-center" id="editJadwalContainer"></div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Batal
+        </button>
+        <button type="button" class="btn btn-primary" id="simpanJadwalBtn">
+          Simpan Perubahan
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="hapusModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Konfirmasi Hapus Jadwal</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <p>Apakah Anda yakin ingin menghapus jadwal ini?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Batal
+        </button>
+        <button type="button" class="btn btn-danger">Ya, Hapus</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const HARI = [
+      "Senin",
+      "Selasa",
+      "Rabu",
+      "Kamis",
+      "Jumat",
+      "Sabtu",
+      "Minggu",
+    ];
+
+    // --- LOGIKA TAMBAH JADWAL ---
+    const tambahJadwalModal = document.getElementById("tambahJadwalModal");
+    const submitJadwalBtn = document.getElementById("submitJadwalBtn");
+
+    submitJadwalBtn.addEventListener("click", function () {
+      const tableBody = document.getElementById("scheduleTableBody");
+      const newRow = tableBody.insertRow();
+      const lastRowNumber = tableBody.rows.length;
+
+      const namaKaryawan = document.getElementById("tambahNamaKaryawan").value;
+      const formSelects =
+        tambahJadwalModal.querySelectorAll(".modal-body select");
+
+      // Sel untuk No, Nama, dan Jadwal
+      newRow.insertCell(0).textContent = lastRowNumber;
+      newRow.insertCell(1).textContent = namaKaryawan;
+      for (let i = 1; i < formSelects.length; i++) {
+        // Mulai dari 1 untuk lewati nama
+        newRow.insertCell(i + 1).textContent = formSelects[i].value;
+      }
+
+      // Sel untuk Tombol Aksi
+      const aksiCell = newRow.insertCell(-1);
+      aksiCell.innerHTML = `<button class="btn btn-warning btn-sm" title="Edit" data-bs-toggle="modal" data-bs-target="#editJadwalModal"><i class="bi bi-pencil-square"></i></button>
+                              <button class="btn btn-danger btn-sm" title="Hapus" data-bs-toggle="modal" data-bs-target="#hapusModal"><i class="bi bi-trash"></i></button>`;
+
+      const modalInstance = bootstrap.Modal.getInstance(tambahJadwalModal);
+      modalInstance.hide();
+      document.getElementById("tambahJadwalForm").reset();
+    });
+
+    // --- LOGIKA EDIT JADWAL ---
+    const editJadwalModal = document.getElementById("editJadwalModal");
+    editJadwalModal.addEventListener("show.bs.modal", function (event) {
+      const button = event.relatedTarget;
+      const row = button.closest("tr");
+      const rowIndex = row.rowIndex;
+
+      const nama = row.cells[1].textContent;
+      document.getElementById("editNamaKaryawan").value = nama;
+      document.getElementById("editJadwalRowIndex").value = rowIndex;
+
+      const jadwalContainer = document.getElementById("editJadwalContainer");
+      jadwalContainer.innerHTML = ""; // Kosongkan container
+
+      // Buat 7 dropdown untuk setiap hari
+      for (let i = 0; i < HARI.length; i++) {
+        const day = HARI[i];
+        const currentShift = row.cells[i + 2].textContent; // +2 untuk lewati No dan Nama
+
+        const colDiv = document.createElement("div");
+        colDiv.className = "col";
+        colDiv.innerHTML = `<label class="form-label">${day}</label>
+                              <select class="form-select">
+                                  <option value="P" ${
+                                    currentShift === "P" ? "selected" : ""
+                                  }>Pagi</option>
+                                  <option value="S" ${
+                                    currentShift === "S" ? "selected" : ""
+                                  }>Sore</option>
+                                  <option value="L" ${
+                                    currentShift === "L" ? "selected" : ""
+                                  }>Libur</option>
+                              </select>`;
+        jadwalContainer.appendChild(colDiv);
+      }
+    });
+
+    const simpanJadwalBtn = document.getElementById("simpanJadwalBtn");
+    simpanJadwalBtn.addEventListener("click", function () {
+      const rowIndex = document.getElementById("editJadwalRowIndex").value;
+      const table = document.getElementById("scheduleTable");
+      const rowToUpdate = table.rows[rowIndex];
+      const editSelects = editJadwalModal.querySelectorAll(
+        "#editJadwalContainer select"
+      );
+
+      for (let i = 0; i < editSelects.length; i++) {
+        rowToUpdate.cells[i + 2].textContent = editSelects[i].value;
+      }
+
+      const modalInstance = bootstrap.Modal.getInstance(editJadwalModal);
+      modalInstance.hide();
+    });
+
+    // --- LOGIKA UNTUK HAPUS (Reusable) ---
+    const hapusModal = document.getElementById("hapusModal");
+    if (hapusModal) {
+      let rowToDelete = null;
+      hapusModal.addEventListener("show.bs.modal", function (event) {
+        rowToDelete = event.relatedTarget.closest("tr");
+      });
+
+      const yaHapusBtn = hapusModal.querySelector(".btn-danger");
+      yaHapusBtn.addEventListener("click", function () {
+        if (rowToDelete) {
+          rowToDelete.remove();
+          rowToDelete = null;
+        }
+        const modalInstance = bootstrap.Modal.getInstance(hapusModal);
+        modalInstance.hide();
+      });
+    }
+  });
+</script>

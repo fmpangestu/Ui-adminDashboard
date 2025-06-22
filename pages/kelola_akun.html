@@ -1,0 +1,345 @@
+<div class="container-fluid">
+  <h1 class="h3 mb-2 text-gray-800">Kelola Akun</h1>
+  <p class="mb-4">Manajemen data untuk akun pengguna sistem (Admin & Kasir).</p>
+
+  <button
+    class="btn btn-primary mb-3"
+    data-bs-toggle="modal"
+    data-bs-target="#tambahAkunModal"
+  >
+    <i class="bi bi-person-plus-fill me-1"></i> Tambah Akun
+  </button>
+
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <h6 class="m-0 font-weight-bold text-primary">Daftar Akun Pengguna</h6>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered" width="100%" cellspacing="0">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nama Lengkap</th>
+              <th>NIM/NIP</th>
+              <th>Email</th>
+              <th>Username</th>
+              <th>Role</th>
+              <th>Aksi</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Administrator Utama</td>
+              <td>NIP-001</td>
+              <td>admin@funjava.com</td>
+              <td>admin</td>
+              <td>Admin</td>
+              <td>
+                <button
+                  class="btn btn-warning btn-sm"
+                  title="Edit"
+                  data-bs-toggle="modal"
+                  data-bs-target="#editAkunModal"
+                >
+                  <i class="bi bi-pencil-square"></i>
+                </button>
+                <button
+                  class="btn btn-danger btn-sm"
+                  title="Hapus"
+                  data-bs-toggle="modal"
+                  data-bs-target="#hapusModal"
+                >
+                  <i class="bi bi-trash"></i>
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Budi Kasir</td>
+              <td>KSR-001</td>
+              <td>budi.kasir@funjava.com</td>
+              <td>budikasir</td>
+              <td>Kasir</td>
+              <td>
+                <button
+                  class="btn btn-warning btn-sm"
+                  title="Edit"
+                  data-bs-toggle="modal"
+                  data-bs-target="#editAkunModal"
+                >
+                  <i class="bi bi-pencil-square"></i>
+                </button>
+                <button
+                  class="btn btn-danger btn-sm"
+                  title="Hapus"
+                  data-bs-toggle="modal"
+                  data-bs-target="#hapusModal"
+                >
+                  <i class="bi bi-trash"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="tambahAkunModal" tabindex="-1">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Tambah Akun Baru</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Nama Lengkap</label>
+              <input type="text" class="form-control" required />
+            </div>
+            <div class="col-md-6 mb-3">
+              <label class="form-label">NIM/NIP/Karyawan</label>
+              <input type="text" class="form-control" required />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Email</label>
+              <input type="email" class="form-control" required />
+            </div>
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Nomor HP/Telepon</label>
+              <input type="tel" class="form-control" />
+            </div>
+          </div>
+          <hr />
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Username</label>
+              <input type="text" class="form-control" required />
+            </div>
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Password</label>
+              <input type="password" class="form-control" required />
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Role</label>
+            <select class="form-select">
+              <option selected>Pilih Role...</option>
+              <option value="Admin">Admin</option>
+              <option value="Kasir">Kasir</option>
+            </select>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Batal
+        </button>
+        <button type="button" class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="editAkunModal" tabindex="-1">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Edit Akun</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <input type="hidden" id="editAkunId" />
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Nama Lengkap</label>
+              <input
+                type="text"
+                class="form-control"
+                id="editNamaLengkap"
+                required
+              />
+            </div>
+            <div class="col-md-6 mb-3">
+              <label class="form-label">NIM/NIP/Karyawan</label>
+              <input type="text" class="form-control" id="editNip" required />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Email</label>
+              <input
+                type="email"
+                class="form-control"
+                id="editEmail"
+                required
+              />
+            </div>
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Nomor HP/Telepon</label>
+              <input type="tel" class="form-control" id="editTelepon" />
+            </div>
+          </div>
+          <hr />
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Username</label>
+              <input
+                type="text"
+                class="form-control"
+                id="editUsername"
+                required
+              />
+            </div>
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Password Baru</label>
+              <input
+                type="password"
+                class="form-control"
+                placeholder="Kosongkan jika tidak diubah"
+              />
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Role</label>
+            <select class="form-select" id="editRole">
+              <option value="Admin">Admin</option>
+              <option value="Kasir">Kasir</option>
+            </select>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Batal
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          id="simpanPerubahanAkunBtn"
+        >
+          Simpan Perubahan
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="hapusModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Konfirmasi Hapus</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <p>Apakah Anda yakin ingin menghapus data akun ini?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Tidak
+        </button>
+        <button type="button" class="btn btn-danger">Ya, Hapus</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // --- LOGIKA UNTUK EDIT AKUN ---
+    const editAkunModal = document.getElementById("editAkunModal");
+    if (editAkunModal) {
+      editAkunModal.addEventListener("show.bs.modal", function (event) {
+        const button = event.relatedTarget;
+        const row = button.closest("tr");
+
+        // Ambil data dari sel di baris
+        const id = row.cells[0].textContent;
+        const nama = row.cells[1].textContent;
+        const nip = row.cells[2].textContent;
+        const email = row.cells[3].textContent;
+        const username = row.cells[4].textContent;
+        const role = row.cells[5].textContent;
+
+        // Masukkan data ke dalam form di modal edit
+        document.getElementById("editAkunId").value = id;
+        document.getElementById("editNamaLengkap").value = nama;
+        document.getElementById("editNip").value = nip;
+        document.getElementById("editEmail").value = email;
+        document.getElementById("editUsername").value = username;
+        document.getElementById("editRole").value = role;
+
+        // Kosongkan field password setiap kali modal dibuka
+        editAkunModal.querySelector('input[type="password"]').value = "";
+
+        // Simpan referensi baris tabel untuk pembaruan nanti
+        editAkunModal.dataset.rowIndex = row.rowIndex;
+      });
+
+      const simpanBtn = document.getElementById("simpanPerubahanAkunBtn");
+      simpanBtn.addEventListener("click", function () {
+        const rowIndex = editAkunModal.dataset.rowIndex;
+
+        // Ambil nilai baru dari form
+        const namaBaru = document.getElementById("editNamaLengkap").value;
+        const nipBaru = document.getElementById("editNip").value;
+        const emailBaru = document.getElementById("editEmail").value;
+        const usernameBaru = document.getElementById("editUsername").value;
+        const roleBaru = document.getElementById("editRole").value;
+
+        // Update data di tabel secara visual
+        const table = document.querySelector(".table");
+        const rowToUpdate = table.rows[rowIndex];
+        rowToUpdate.cells[1].textContent = namaBaru;
+        rowToUpdate.cells[2].textContent = nipBaru;
+        rowToUpdate.cells[3].textContent = emailBaru;
+        rowToUpdate.cells[4].textContent = usernameBaru;
+        rowToUpdate.cells[5].textContent = roleBaru;
+
+        // Tutup modal
+        const modalInstance = bootstrap.Modal.getInstance(editAkunModal);
+        modalInstance.hide();
+      });
+    }
+
+    // --- LOGIKA UNTUK HAPUS (Reusable) ---
+    const hapusModal = document.getElementById("hapusModal");
+    if (hapusModal) {
+      let rowToDelete = null;
+      hapusModal.addEventListener("show.bs.modal", function (event) {
+        rowToDelete = event.relatedTarget.closest("tr");
+      });
+
+      const yaHapusBtn = hapusModal.querySelector(".btn-danger");
+      yaHapusBtn.addEventListener("click", function () {
+        if (rowToDelete) {
+          rowToDelete.remove();
+          rowToDelete = null;
+        }
+        const modalInstance = bootstrap.Modal.getInstance(hapusModal);
+        modalInstance.hide();
+      });
+    }
+  });
+</script>

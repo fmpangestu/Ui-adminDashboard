@@ -1,0 +1,334 @@
+<div class="container-fluid">
+  <h1 class="h3 mb-2 text-gray-800">Kelola Bahan</h1>
+  <p class="mb-4">Manajemen data untuk bahan baku produk.</p>
+
+  <button
+    class="btn btn-primary mb-3"
+    data-bs-toggle="modal"
+    data-bs-target="#tambahBahanModal"
+  >
+    <i class="bi bi-plus-circle me-1"></i> Tambah Bahan
+  </button>
+
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <h6 class="m-0 font-weight-bold text-primary">Daftar Bahan Baku</h6>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered" width="100%" cellspacing="0">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Jenis Bahan</th>
+              <th>Nama Bahan</th>
+              <th>Satuan</th>
+              <th>Jumlah</th>
+              <th>Harga Satuan (Rp)</th>
+              <th>Aksi</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Bumbu</td>
+              <td>Garam</td>
+              <td>Kg</td>
+              <td>5</td>
+              <td>8000</td>
+              <td>
+                <button
+                  class="btn btn-warning btn-sm"
+                  title="Edit"
+                  data-bs-toggle="modal"
+                  data-bs-target="#editBahanModal"
+                >
+                  <i class="bi bi-pencil-square"></i>
+                </button>
+                <button
+                  class="btn btn-danger btn-sm"
+                  title="Hapus"
+                  data-bs-toggle="modal"
+                  data-bs-target="#hapusModal"
+                >
+                  <i class="bi bi-trash"></i>
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Sayuran</td>
+              <td>Bawang Merah</td>
+              <td>Kg</td>
+              <td>10</td>
+              <td>25000</td>
+              <td>
+                <button
+                  class="btn btn-warning btn-sm"
+                  title="Edit"
+                  data-bs-toggle="modal"
+                  data-bs-target="#editBahanModal"
+                >
+                  <i class="bi bi-pencil-square"></i>
+                </button>
+                <button
+                  class="btn btn-danger btn-sm"
+                  title="Hapus"
+                  data-bs-toggle="modal"
+                  data-bs-target="#hapusModal"
+                >
+                  <i class="bi bi-trash"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="tambahBahanModal" tabindex="-1">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Tambah Bahan Baru</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Jenis Bahan</label>
+              <select class="form-select">
+                <option selected>Pilih Jenis...</option>
+                <option value="Bumbu">Bumbu</option>
+                <option value="Sayuran">Sayuran</option>
+                <option value="Daging">Daging</option>
+              </select>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Nama Bahan</label>
+              <input type="text" class="form-control" required />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Satuan</label>
+              <select class="form-select">
+                <option selected>Pilih Satuan...</option>
+                <option value="Kg">Kg</option>
+                <option value="Gr">Gr</option>
+                <option value="Liter">Liter</option>
+                <option value="Pcs">Pcs</option>
+              </select>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Jumlah</label>
+              <input type="number" class="form-control" required />
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Harga Satuan</label>
+            <input
+              type="number"
+              class="form-control"
+              placeholder="Contoh: 8000"
+              required
+            />
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Batal
+        </button>
+        <button type="button" class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="editBahanModal" tabindex="-1">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Edit Bahan</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <input type="hidden" id="editBahanId" />
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Jenis Bahan</label>
+              <select class="form-select" id="editJenisBahan">
+                <option value="Bumbu">Bumbu</option>
+                <option value="Sayuran">Sayuran</option>
+                <option value="Daging">Daging</option>
+              </select>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Nama Bahan</label>
+              <input
+                type="text"
+                class="form-control"
+                id="editNamaBahan"
+                required
+              />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Satuan</label>
+              <select class="form-select" id="editSatuan">
+                <option value="Kg">Kg</option>
+                <option value="Gr">Gr</option>
+                <option value="Liter">Liter</option>
+                <option value="Pcs">Pcs</option>
+              </select>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Jumlah</label>
+              <input
+                type="number"
+                class="form-control"
+                id="editJumlah"
+                required
+              />
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Harga Satuan</label>
+            <input
+              type="number"
+              class="form-control"
+              id="editHargaSatuan"
+              required
+            />
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Batal
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          id="simpanPerubahanBahanBtn"
+        >
+          Simpan Perubahan
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="hapusModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Konfirmasi Hapus</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <p>Apakah Anda yakin ingin menghapus data ini?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Tidak
+        </button>
+        <button type="button" class="btn btn-danger">Ya, Hapus</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // --- LOGIKA UNTUK EDIT BAHAN ---
+    const editBahanModal = document.getElementById("editBahanModal");
+    if (editBahanModal) {
+      editBahanModal.addEventListener("show.bs.modal", function (event) {
+        const button = event.relatedTarget;
+        const row = button.closest("tr");
+
+        // Ambil semua data dari setiap sel di baris
+        const id = row.cells[0].textContent;
+        const jenis = row.cells[1].textContent;
+        const nama = row.cells[2].textContent;
+        const satuan = row.cells[3].textContent;
+        const jumlah = row.cells[4].textContent;
+        const harga = row.cells[5].textContent;
+
+        // Masukkan data ke dalam form di modal edit
+        document.getElementById("editBahanId").value = id;
+        document.getElementById("editJenisBahan").value = jenis;
+        document.getElementById("editNamaBahan").value = nama;
+        document.getElementById("editSatuan").value = satuan;
+        document.getElementById("editJumlah").value = jumlah;
+        document.getElementById("editHargaSatuan").value = harga;
+
+        // Simpan referensi baris tabel untuk pembaruan nanti
+        editBahanModal.dataset.rowIndex = row.rowIndex;
+      });
+
+      const simpanBtn = document.getElementById("simpanPerubahanBahanBtn");
+      simpanBtn.addEventListener("click", function () {
+        const rowIndex = editBahanModal.dataset.rowIndex;
+
+        // Ambil nilai baru dari form
+        const jenisBaru = document.getElementById("editJenisBahan").value;
+        const namaBaru = document.getElementById("editNamaBahan").value;
+        const satuanBaru = document.getElementById("editSatuan").value;
+        const jumlahBaru = document.getElementById("editJumlah").value;
+        const hargaBaru = document.getElementById("editHargaSatuan").value;
+
+        // Update data di tabel secara visual
+        const table = document.querySelector(".table");
+        const rowToUpdate = table.rows[rowIndex];
+        rowToUpdate.cells[1].textContent = jenisBaru;
+        rowToUpdate.cells[2].textContent = namaBaru;
+        rowToUpdate.cells[3].textContent = satuanBaru;
+        rowToUpdate.cells[4].textContent = jumlahBaru;
+        rowToUpdate.cells[5].textContent = hargaBaru;
+
+        // Tutup modal
+        const modalInstance = bootstrap.Modal.getInstance(editBahanModal);
+        modalInstance.hide();
+      });
+    }
+
+    // --- LOGIKA UNTUK HAPUS (Reusable) ---
+    const hapusModal = document.getElementById("hapusModal");
+    if (hapusModal) {
+      let rowToDelete = null;
+      hapusModal.addEventListener("show.bs.modal", function (event) {
+        rowToDelete = event.relatedTarget.closest("tr");
+      });
+
+      const yaHapusBtn = hapusModal.querySelector(".btn-danger");
+      yaHapusBtn.addEventListener("click", function () {
+        if (rowToDelete) {
+          rowToDelete.remove();
+          rowToDelete = null;
+        }
+        const modalInstance = bootstrap.Modal.getInstance(hapusModal);
+        modalInstance.hide();
+      });
+    }
+  });
+</script>

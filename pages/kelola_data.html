@@ -1,0 +1,333 @@
+<style>
+  .schedule-table .shift-p {
+    background-color: #fff2cc;
+  } /* Kuning */
+  .schedule-table .shift-s {
+    background-color: #f8cecc;
+  } /* Merah */
+  .schedule-table .shift-l {
+    background-color: #e2e3e5;
+  } /* Abu-abu */
+
+  /* Sembunyikan dropdown secara default (mode lihat) */
+  .schedule-table td .shift-select {
+    display: none;
+    width: 100%;
+    border: none;
+    background: transparent;
+  }
+
+  /* Saat mode edit (.is-editing), tampilkan dropdown dan sembunyikan teks */
+  .schedule-table.is-editing td .shift-select {
+    display: block;
+  }
+  .schedule-table.is-editing td .shift-text {
+    display: none;
+  }
+
+  .schedule-table td {
+    text-align: center;
+    vertical-align: middle;
+    font-weight: bold;
+  }
+</style>
+
+<div class="container-fluid">
+  <h1 class="h3 mb-2 text-gray-800">Kelola Data</h1>
+  <p class="mb-4">Mengatur data shift mingguan untuk semua karyawan.</p>
+
+  <div class="mb-3">
+    <button id="kelolaBtn" class="btn btn-primary">
+      <i class="bi bi-pencil-square me-1"></i> Kelola Data
+    </button>
+    <button id="simpanBtn" class="btn btn-success d-none">
+      <i class="bi bi-check-circle me-1"></i> Simpan Perubahan
+    </button>
+    <button id="batalBtn" class="btn btn-secondary d-none">
+      <i class="bi bi-x-circle me-1"></i> Batalkan
+    </button>
+  </div>
+
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <h6 class="m-0 font-weight-bold text-primary">Data Minggu Ini</h6>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table
+          id="scheduleTable"
+          class="table table-bordered schedule-table"
+          width="100%"
+          cellspacing="0"
+        >
+          <thead>
+            <tr>
+              <th>No</th>
+              <th>Nama</th>
+              <th>Senin</th>
+              <th>Selasa</th>
+              <th>Rabu</th>
+              <th>Kamis</th>
+              <th>Jumat</th>
+              <th>Sabtu</th>
+              <th>Minggu</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Barista 1</td>
+              <td class="shift-p">
+                <span class="shift-text">P</span>
+                <select class="form-select shift-select">
+                  <option value="P">P</option>
+                  <option value="S">S</option>
+                  <option value="L">L</option>
+                </select>
+              </td>
+              <td class="shift-p">
+                <span class="shift-text">P</span>
+                <select class="form-select shift-select">
+                  <option value="P">P</option>
+                  <option value="S">S</option>
+                  <option value="L">L</option>
+                </select>
+              </td>
+              <td class="shift-p">
+                <span class="shift-text">P</span>
+                <select class="form-select shift-select">
+                  <option value="P">P</option>
+                  <option value="S">S</option>
+                  <option value="L">L</option>
+                </select>
+              </td>
+              <td class="shift-s">
+                <span class="shift-text">S</span>
+                <select class="form-select shift-select">
+                  <option value="P">P</option>
+                  <option value="S">S</option>
+                  <option value="L">L</option>
+                </select>
+              </td>
+              <td class="shift-s">
+                <span class="shift-text">S</span>
+                <select class="form-select shift-select">
+                  <option value="P">P</option>
+                  <option value="S">S</option>
+                  <option value="L">L</option>
+                </select>
+              </td>
+              <td class="shift-l">
+                <span class="shift-text">L</span>
+                <select class="form-select shift-select">
+                  <option value="P">P</option>
+                  <option value="S">S</option>
+                  <option value="L">L</option>
+                </select>
+              </td>
+              <td class="shift-l">
+                <span class="shift-text">L</span>
+                <select class="form-select shift-select">
+                  <option value="P">P</option>
+                  <option value="S">S</option>
+                  <option value="L">L</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Barista 2</td>
+              <td class="shift-s">
+                <span class="shift-text">S</span>
+                <select class="form-select shift-select">
+                  <option value="P">P</option>
+                  <option value="S">S</option>
+                  <option value="L">L</option>
+                </select>
+              </td>
+              <td class="shift-s">
+                <span class="shift-text">S</span>
+                <select class="form-select shift-select">
+                  <option value="P">P</option>
+                  <option value="S">S</option>
+                  <option value="L">L</option>
+                </select>
+              </td>
+              <td class="shift-s">
+                <span class="shift-text">S</span>
+                <select class="form-select shift-select">
+                  <option value="P">P</option>
+                  <option value="S">S</option>
+                  <option value="L">L</option>
+                </select>
+              </td>
+              <td class="shift-p">
+                <span class="shift-text">P</span>
+                <select class="form-select shift-select">
+                  <option value="P">P</option>
+                  <option value="S">S</option>
+                  <option value="L">L</option>
+                </select>
+              </td>
+              <td class="shift-p">
+                <span class="shift-text">P</span>
+                <select class="form-select shift-select">
+                  <option value="P">P</option>
+                  <option value="S">S</option>
+                  <option value="L">L</option>
+                </select>
+              </td>
+              <td class="shift-l">
+                <span class="shift-text">L</span>
+                <select class="form-select shift-select">
+                  <option value="P">P</option>
+                  <option value="S">S</option>
+                  <option value="L">L</option>
+                </select>
+              </td>
+              <td class="shift-l">
+                <span class="shift-text">L</span>
+                <select class="form-select shift-select">
+                  <option value="P">P</option>
+                  <option value="S">S</option>
+                  <option value="L">L</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Kasir 1</td>
+              <td class="shift-p">
+                <span class="shift-text">P</span>
+                <select class="form-select shift-select">
+                  <option value="P">P</option>
+                  <option value="S">S</option>
+                  <option value="L">L</option>
+                </select>
+              </td>
+              <td class="shift-s">
+                <span class="shift-text">S</span>
+                <select class="form-select shift-select">
+                  <option value="P">P</option>
+                  <option value="S">S</option>
+                  <option value="L">L</option>
+                </select>
+              </td>
+              <td class="shift-p">
+                <span class="shift-text">P</span>
+                <select class="form-select shift-select">
+                  <option value="P">P</option>
+                  <option value="S">S</option>
+                  <option value="L">L</option>
+                </select>
+              </td>
+              <td class="shift-s">
+                <span class="shift-text">S</span>
+                <select class="form-select shift-select">
+                  <option value="P">P</option>
+                  <option value="S">S</option>
+                  <option value="L">L</option>
+                </select>
+              </td>
+              <td class="shift-p">
+                <span class="shift-text">P</span>
+                <select class="form-select shift-select">
+                  <option value="P">P</option>
+                  <option value="S">S</option>
+                  <option value="L">L</option>
+                </select>
+              </td>
+              <td class="shift-l">
+                <span class="shift-text">L</span>
+                <select class="form-select shift-select">
+                  <option value="P">P</option>
+                  <option value="S">S</option>
+                  <option value="L">L</option>
+                </select>
+              </td>
+              <td class="shift-l">
+                <span class="shift-text">L</span>
+                <select class="form-select shift-select">
+                  <option value="P">P</option>
+                  <option value="S">S</option>
+                  <option value="L">L</option>
+                </select>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const kelolaBtn = document.getElementById("kelolaBtn");
+    const simpanBtn = document.getElementById("simpanBtn");
+    const batalBtn = document.getElementById("batalBtn");
+    const scheduleTable = document.getElementById("scheduleTable");
+
+    // Fungsi untuk masuk ke mode edit
+    kelolaBtn.addEventListener("click", function () {
+      scheduleTable.classList.add("is-editing");
+      // Set nilai dropdown sesuai dengan teks yang ada
+      scheduleTable.querySelectorAll("td").forEach((cell) => {
+        const text = cell.querySelector(".shift-text");
+        const select = cell.querySelector(".shift-select");
+        if (text && select) {
+          select.value = text.textContent;
+        }
+      });
+
+      // Ganti tombol
+      kelolaBtn.classList.add("d-none");
+      simpanBtn.classList.remove("d-none");
+      batalBtn.classList.remove("d-none");
+    });
+
+    // Fungsi untuk menyimpan perubahan
+    simpanBtn.addEventListener("click", function () {
+      scheduleTable.classList.remove("is-editing");
+      // Update teks sesuai dengan nilai dropdown yang dipilih
+      scheduleTable.querySelectorAll("td").forEach((cell) => {
+        const text = cell.querySelector(".shift-text");
+        const select = cell.querySelector(".shift-select");
+        if (text && select) {
+          text.textContent = select.value;
+        }
+      });
+
+      // Ganti tombol kembali
+      kelolaBtn.classList.remove("d-none");
+      simpanBtn.classList.add("d-none");
+      batalBtn.classList.add("d-none");
+    });
+
+    // Fungsi untuk membatalkan perubahan
+    batalBtn.addEventListener("click", function () {
+      scheduleTable.classList.remove("is-editing");
+      // Tidak perlu update apa-apa, cukup keluar dari mode edit
+
+      // Ganti tombol kembali
+      kelolaBtn.classList.remove("d-none");
+      simpanBtn.classList.add("d-none");
+      batalBtn.classList.add("d-none");
+    });
+
+    // Fungsi untuk mengubah warna sel secara real-time saat dropdown diganti
+    scheduleTable.addEventListener("change", function (event) {
+      if (event.target.classList.contains("shift-select")) {
+        const select = event.target;
+        const cell = select.closest("td");
+        const newShift = select.value.toLowerCase(); // 'p', 's', atau 'l'
+
+        // Hapus kelas warna lama dan tambahkan yang baru
+        cell.classList.remove("shift-p", "shift-s", "shift-l");
+        if (newShift) {
+          cell.classList.add("shift-" + newShift);
+        }
+      }
+    });
+  });
+</script>

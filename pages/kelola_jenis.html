@@ -1,0 +1,235 @@
+<div class="container-fluid">
+  <h1 class="h3 mb-2 text-gray-800">Kelola Jenis Bahan</h1>
+  <p class="mb-4">
+    Manajemen data untuk jenis bahan baku (misal: Bumbu, Sayuran, Daging).
+  </p>
+
+  <button
+    class="btn btn-primary mb-3"
+    data-bs-toggle="modal"
+    data-bs-target="#tambahJenisBahanModal"
+  >
+    <i class="bi bi-plus-circle me-1"></i> Tambah Jenis Bahan
+  </button>
+
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <h6 class="m-0 font-weight-bold text-primary">Daftar Jenis Bahan</h6>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered" width="100%" cellspacing="0">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nama Jenis Bahan</th>
+              <th>Aksi</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Bumbu</td>
+              <td>
+                <button
+                  class="btn btn-warning btn-sm"
+                  title="Edit"
+                  data-bs-toggle="modal"
+                  data-bs-target="#editJenisBahanModal"
+                >
+                  <i class="bi bi-pencil-square"></i>
+                </button>
+                <button
+                  class="btn btn-danger btn-sm"
+                  title="Hapus"
+                  data-bs-toggle="modal"
+                  data-bs-target="#hapusModal"
+                >
+                  <i class="bi bi-trash"></i>
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Sayuran</td>
+              <td>
+                <button
+                  class="btn btn-warning btn-sm"
+                  title="Edit"
+                  data-bs-toggle="modal"
+                  data-bs-target="#editJenisBahanModal"
+                >
+                  <i class="bi bi-pencil-square"></i>
+                </button>
+                <button
+                  class="btn btn-danger btn-sm"
+                  title="Hapus"
+                  data-bs-toggle="modal"
+                  data-bs-target="#hapusModal"
+                >
+                  <i class="bi bi-trash"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="tambahJenisBahanModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Tambah Jenis Bahan Baru</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="namaJenisBahan" class="form-label"
+              >Nama Jenis Bahan</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="namaJenisBahan"
+              required
+            />
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Batal
+        </button>
+        <button type="button" class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="editJenisBahanModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Edit Jenis Bahan</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <input type="hidden" id="editJenisBahanId" />
+          <div class="mb-3">
+            <label for="editNamaJenisBahan" class="form-label"
+              >Nama Jenis Bahan</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="editNamaJenisBahan"
+              required
+            />
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Batal
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          id="simpanPerubahanJenisBahanBtn"
+        >
+          Simpan Perubahan
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="hapusModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Konfirmasi Hapus</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <p>Apakah Anda yakin ingin menghapus data ini?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Tidak
+        </button>
+        <button type="button" class="btn btn-danger">Ya, Hapus</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // --- LOGIKA UNTUK EDIT JENIS BAHAN ---
+    const editJenisBahanModal = document.getElementById("editJenisBahanModal");
+    if (editJenisBahanModal) {
+      editJenisBahanModal.addEventListener("show.bs.modal", function (event) {
+        const button = event.relatedTarget;
+        const row = button.closest("tr");
+
+        const id = row.cells[0].textContent;
+        const nama = row.cells[1].textContent;
+
+        document.getElementById("editJenisBahanId").value = id;
+        document.getElementById("editNamaJenisBahan").value = nama;
+
+        editJenisBahanModal.dataset.rowIndex = row.rowIndex;
+      });
+
+      const simpanBtn = document.getElementById("simpanPerubahanJenisBahanBtn");
+      simpanBtn.addEventListener("click", function () {
+        const rowIndex = editJenisBahanModal.dataset.rowIndex;
+        const namaBaru = document.getElementById("editNamaJenisBahan").value;
+
+        const table = document.querySelector(".table");
+        const rowToUpdate = table.rows[rowIndex];
+        rowToUpdate.cells[1].textContent = namaBaru;
+
+        const modalInstance = bootstrap.Modal.getInstance(editJenisBahanModal);
+        modalInstance.hide();
+      });
+    }
+
+    // --- LOGIKA UNTUK HAPUS (Reusable) ---
+    const hapusModal = document.getElementById("hapusModal");
+    if (hapusModal) {
+      let rowToDelete = null;
+      hapusModal.addEventListener("show.bs.modal", function (event) {
+        rowToDelete = event.relatedTarget.closest("tr");
+      });
+
+      const yaHapusBtn = hapusModal.querySelector(".btn-danger");
+      yaHapusBtn.addEventListener("click", function () {
+        if (rowToDelete) {
+          rowToDelete.remove();
+          rowToDelete = null;
+        }
+        const modalInstance = bootstrap.Modal.getInstance(hapusModal);
+        modalInstance.hide();
+      });
+    }
+  });
+</script>

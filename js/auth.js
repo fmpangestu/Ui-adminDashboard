@@ -7,6 +7,19 @@ document.addEventListener("DOMContentLoaded", function () {
   const registerTab = document.getElementById("registerTab");
   const loginForm = document.getElementById("loginForm");
   const registerForm = document.getElementById("registerForm");
+  const pwRegist = document.getElementById("pwRegist");
+
+  pwRegist.addEventListener("keyup", function () {
+    const pwRegistValue = pwRegist.value;
+    const pwRegistConfirm = document.getElementById("pwRegistConfirm");
+
+    // Periksa apakah password dan konfirmasi password cocok
+    if (pwRegistValue === pwRegistConfirm.value) {
+      pwRegistConfirm.setCustomValidity(""); // Reset pesan kesalahan
+    } else {
+      pwRegistConfirm.setCustomValidity("Password tidak cocok!"); // Set pesan kesalahan
+    }
+  });
 
   // Tambahkan event listener untuk klik pada Tab Login
   loginTab.addEventListener("click", function (event) {

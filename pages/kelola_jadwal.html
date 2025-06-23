@@ -275,7 +275,6 @@
       "Minggu",
     ];
 
-    // --- LOGIKA TAMBAH JADWAL ---
     const tambahJadwalModal = document.getElementById("tambahJadwalModal");
     const submitJadwalBtn = document.getElementById("submitJadwalBtn");
 
@@ -288,15 +287,12 @@
       const formSelects =
         tambahJadwalModal.querySelectorAll(".modal-body select");
 
-      // Sel untuk No, Nama, dan Jadwal
       newRow.insertCell(0).textContent = lastRowNumber;
       newRow.insertCell(1).textContent = namaKaryawan;
       for (let i = 1; i < formSelects.length; i++) {
-        // Mulai dari 1 untuk lewati nama
         newRow.insertCell(i + 1).textContent = formSelects[i].value;
       }
 
-      // Sel untuk Tombol Aksi
       const aksiCell = newRow.insertCell(-1);
       aksiCell.innerHTML = `<button class="btn btn-warning btn-sm" title="Edit" data-bs-toggle="modal" data-bs-target="#editJadwalModal"><i class="bi bi-pencil-square"></i></button>
                               <button class="btn btn-danger btn-sm" title="Hapus" data-bs-toggle="modal" data-bs-target="#hapusModal"><i class="bi bi-trash"></i></button>`;
@@ -306,7 +302,6 @@
       document.getElementById("tambahJadwalForm").reset();
     });
 
-    // --- LOGIKA EDIT JADWAL ---
     const editJadwalModal = document.getElementById("editJadwalModal");
     editJadwalModal.addEventListener("show.bs.modal", function (event) {
       const button = event.relatedTarget;
@@ -318,12 +313,11 @@
       document.getElementById("editJadwalRowIndex").value = rowIndex;
 
       const jadwalContainer = document.getElementById("editJadwalContainer");
-      jadwalContainer.innerHTML = ""; // Kosongkan container
+      jadwalContainer.innerHTML = "";
 
-      // Buat 7 dropdown untuk setiap hari
       for (let i = 0; i < HARI.length; i++) {
         const day = HARI[i];
-        const currentShift = row.cells[i + 2].textContent; // +2 untuk lewati No dan Nama
+        const currentShift = row.cells[i + 2].textContent;
 
         const colDiv = document.createElement("div");
         colDiv.className = "col";

@@ -1,4 +1,3 @@
-// js/components.js
 async function loadComponent(url, elementId) {
   try {
     const response = await fetch(url);

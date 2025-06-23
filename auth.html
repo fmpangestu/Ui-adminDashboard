@@ -13,7 +13,7 @@
       .nav-tabs {
         display: flex;
         flex-wrap: nowrap;
-        gap: 5px; /* biar border tengah tidak dobel */
+        gap: 5px;
       }
       body {
         background-color: #f8f9fa;
@@ -27,7 +27,7 @@
     <div
       class="container d-flex justify-content-center align-items-center auth-container"
     >
-      <div class="card shadow-sm" style="width: 100%; max-width: 400px">
+      <div class="card shadow-sm" style="width: 100%; max-width: 600px">
         <div class="card-header">
           <ul class="nav nav-tabs card-header-tabs rounded overflow-hidden">
             <li class="nav-item w-50 text-center">
@@ -73,35 +73,48 @@
           </div>
 
           <div id="registerForm" class="d-none">
-            <h5 class="card-title text-center mb-4">Buat Akun Baru</h5>
+            <h5 class="card-title text-center mb-4 container">
+              Buat Akun Baru
+            </h5>
             <form action="auth.html">
-              <div class="mb-2">
-                <label class="form-label">Nama Lengkap</label>
-                <input type="text" class="form-control" required />
+              <div class="row">
+                <div class="mb-2 col">
+                  <label class="form-label">Nama Lengkap</label>
+                  <input type="text" class="form-control" required />
+                </div>
+                <div class="mb-2 col">
+                  <label class="form-label">NIM/NIP/Karyawan</label>
+                  <input type="text" class="form-control" required />
+                </div>
               </div>
-              <div class="mb-2">
-                <label class="form-label">NIM/NIP/Karyawan</label>
-                <input type="text" class="form-control" required />
-              </div>
-              <div class="mb-2">
-                <label class="form-label">Email</label>
-                <input type="email" class="form-control" required />
+              <div class="row">
+                <div class="mb-2 col">
+                  <label class="form-label">Email</label>
+                  <input type="email" class="form-control" required />
+                </div>
+                <div class="mb-2 col">
+                  <label class="form-label">Nomor HP/Telepon</label>
+                  <input type="tel" class="form-control" required />
+                </div>
               </div>
               <div class="mb-2">
                 <label class="form-label">Alamat</label>
                 <input type="text" class="form-control" required />
               </div>
-              <div class="mb-2">
-                <label class="form-label">Nomor HP/Telepon</label>
-                <input type="tel" class="form-control" required />
-              </div>
-              <div class="mb-2">
-                <label class="form-label">Username</label>
-                <input type="text" class="form-control" required />
-              </div>
-              <div class="mb-2">
-                <label class="form-label">Password</label>
-                <input type="password" class="form-control" required />
+              <div class="row">
+                <div class="mb-2 col">
+                  <label class="form-label">Username</label>
+                  <input type="text" class="form-control" required />
+                </div>
+                <div class="mb-2 col">
+                  <label class="form-label">Password</label>
+                  <input
+                    id="pwRegist"
+                    type="password"
+                    class="form-control"
+                    required
+                  />
+                </div>
               </div>
               <button type="submit" class="btn btn-primary w-100 mt-3">
                 Register

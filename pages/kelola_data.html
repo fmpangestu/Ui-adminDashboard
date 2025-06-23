@@ -268,10 +268,9 @@
     const batalBtn = document.getElementById("batalBtn");
     const scheduleTable = document.getElementById("scheduleTable");
 
-    // Fungsi untuk masuk ke mode edit
     kelolaBtn.addEventListener("click", function () {
       scheduleTable.classList.add("is-editing");
-      // Set nilai dropdown sesuai dengan teks yang ada
+
       scheduleTable.querySelectorAll("td").forEach((cell) => {
         const text = cell.querySelector(".shift-text");
         const select = cell.querySelector(".shift-select");
@@ -280,16 +279,14 @@
         }
       });
 
-      // Ganti tombol
       kelolaBtn.classList.add("d-none");
       simpanBtn.classList.remove("d-none");
       batalBtn.classList.remove("d-none");
     });
 
-    // Fungsi untuk menyimpan perubahan
     simpanBtn.addEventListener("click", function () {
       scheduleTable.classList.remove("is-editing");
-      // Update teks sesuai dengan nilai dropdown yang dipilih
+
       scheduleTable.querySelectorAll("td").forEach((cell) => {
         const text = cell.querySelector(".shift-text");
         const select = cell.querySelector(".shift-select");
@@ -298,31 +295,24 @@
         }
       });
 
-      // Ganti tombol kembali
       kelolaBtn.classList.remove("d-none");
       simpanBtn.classList.add("d-none");
       batalBtn.classList.add("d-none");
     });
 
-    // Fungsi untuk membatalkan perubahan
     batalBtn.addEventListener("click", function () {
       scheduleTable.classList.remove("is-editing");
-      // Tidak perlu update apa-apa, cukup keluar dari mode edit
 
-      // Ganti tombol kembali
       kelolaBtn.classList.remove("d-none");
       simpanBtn.classList.add("d-none");
       batalBtn.classList.add("d-none");
     });
 
-    // Fungsi untuk mengubah warna sel secara real-time saat dropdown diganti
     scheduleTable.addEventListener("change", function (event) {
       if (event.target.classList.contains("shift-select")) {
         const select = event.target;
         const cell = select.closest("td");
-        const newShift = select.value.toLowerCase(); // 'p', 's', atau 'l'
-
-        // Hapus kelas warna lama dan tambahkan yang baru
+        const newShift = select.value.toLowerCase();
         cell.classList.remove("shift-p", "shift-s", "shift-l");
         if (newShift) {
           cell.classList.add("shift-" + newShift);

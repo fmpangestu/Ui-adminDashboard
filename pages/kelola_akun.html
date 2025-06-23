@@ -267,14 +267,12 @@
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {
-    // --- LOGIKA UNTUK EDIT AKUN ---
     const editAkunModal = document.getElementById("editAkunModal");
     if (editAkunModal) {
       editAkunModal.addEventListener("show.bs.modal", function (event) {
         const button = event.relatedTarget;
         const row = button.closest("tr");
 
-        // Ambil data dari sel di baris
         const id = row.cells[0].textContent;
         const nama = row.cells[1].textContent;
         const nip = row.cells[2].textContent;
@@ -282,33 +280,24 @@
         const username = row.cells[4].textContent;
         const role = row.cells[5].textContent;
 
-        // Masukkan data ke dalam form di modal edit
         document.getElementById("editAkunId").value = id;
         document.getElementById("editNamaLengkap").value = nama;
         document.getElementById("editNip").value = nip;
         document.getElementById("editEmail").value = email;
         document.getElementById("editUsername").value = username;
         document.getElementById("editRole").value = role;
-
-        // Kosongkan field password setiap kali modal dibuka
         editAkunModal.querySelector('input[type="password"]').value = "";
-
-        // Simpan referensi baris tabel untuk pembaruan nanti
         editAkunModal.dataset.rowIndex = row.rowIndex;
       });
 
       const simpanBtn = document.getElementById("simpanPerubahanAkunBtn");
       simpanBtn.addEventListener("click", function () {
         const rowIndex = editAkunModal.dataset.rowIndex;
-
-        // Ambil nilai baru dari form
         const namaBaru = document.getElementById("editNamaLengkap").value;
         const nipBaru = document.getElementById("editNip").value;
         const emailBaru = document.getElementById("editEmail").value;
         const usernameBaru = document.getElementById("editUsername").value;
         const roleBaru = document.getElementById("editRole").value;
-
-        // Update data di tabel secara visual
         const table = document.querySelector(".table");
         const rowToUpdate = table.rows[rowIndex];
         rowToUpdate.cells[1].textContent = namaBaru;
@@ -316,14 +305,11 @@
         rowToUpdate.cells[3].textContent = emailBaru;
         rowToUpdate.cells[4].textContent = usernameBaru;
         rowToUpdate.cells[5].textContent = roleBaru;
-
-        // Tutup modal
         const modalInstance = bootstrap.Modal.getInstance(editAkunModal);
         modalInstance.hide();
       });
     }
 
-    // --- LOGIKA UNTUK HAPUS (Reusable) ---
     const hapusModal = document.getElementById("hapusModal");
     if (hapusModal) {
       let rowToDelete = null;

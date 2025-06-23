@@ -240,14 +240,12 @@
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {
-    // --- LOGIKA UNTUK EDIT PRODUK ---
     const editProdukModal = document.getElementById("editProdukModal");
     if (editProdukModal) {
       editProdukModal.addEventListener("show.bs.modal", function (event) {
         const button = event.relatedTarget;
         const row = button.closest("tr");
 
-        // Ambil semua data dari setiap sel di baris
         const id = row.cells[0].textContent;
         const jenis = row.cells[1].textContent;
         const nama = row.cells[2].textContent;
@@ -255,7 +253,6 @@
         const hpp = row.cells[4].textContent;
         const hargaJual = row.cells[5].textContent;
 
-        // Masukkan data ke dalam form di modal edit
         document.getElementById("editProdukId").value = id;
         document.getElementById("editJenisProduk").value = jenis;
         document.getElementById("editNamaProduk").value = nama;
@@ -263,7 +260,6 @@
         document.getElementById("editHpp").value = hpp;
         document.getElementById("editHargaJual").value = hargaJual;
 
-        // Simpan referensi baris tabel untuk pembaruan nanti
         editProdukModal.dataset.rowIndex = row.rowIndex;
       });
 
@@ -271,14 +267,12 @@
       simpanBtn.addEventListener("click", function () {
         const rowIndex = editProdukModal.dataset.rowIndex;
 
-        // Ambil nilai baru dari form
         const jenisBaru = document.getElementById("editJenisProduk").value;
         const namaBaru = document.getElementById("editNamaProduk").value;
         const komposisiBaru = document.getElementById("editKomposisi").value;
         const hppBaru = document.getElementById("editHpp").value;
         const hargaJualBaru = document.getElementById("editHargaJual").value;
 
-        // Update data di tabel secara visual
         const table = document.querySelector(".table");
         const rowToUpdate = table.rows[rowIndex];
         rowToUpdate.cells[1].textContent = jenisBaru;
@@ -287,13 +281,11 @@
         rowToUpdate.cells[4].textContent = hppBaru;
         rowToUpdate.cells[5].textContent = hargaJualBaru;
 
-        // Tutup modal
         const modalInstance = bootstrap.Modal.getInstance(editProdukModal);
         modalInstance.hide();
       });
     }
 
-    // --- LOGIKA UNTUK HAPUS (Reusable) ---
     const hapusModal = document.getElementById("hapusModal");
     if (hapusModal) {
       let rowToDelete = null;

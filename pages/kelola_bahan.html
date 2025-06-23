@@ -259,14 +259,12 @@
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {
-    // --- LOGIKA UNTUK EDIT BAHAN ---
     const editBahanModal = document.getElementById("editBahanModal");
     if (editBahanModal) {
       editBahanModal.addEventListener("show.bs.modal", function (event) {
         const button = event.relatedTarget;
         const row = button.closest("tr");
 
-        // Ambil semua data dari setiap sel di baris
         const id = row.cells[0].textContent;
         const jenis = row.cells[1].textContent;
         const nama = row.cells[2].textContent;
@@ -274,7 +272,6 @@
         const jumlah = row.cells[4].textContent;
         const harga = row.cells[5].textContent;
 
-        // Masukkan data ke dalam form di modal edit
         document.getElementById("editBahanId").value = id;
         document.getElementById("editJenisBahan").value = jenis;
         document.getElementById("editNamaBahan").value = nama;
@@ -282,7 +279,6 @@
         document.getElementById("editJumlah").value = jumlah;
         document.getElementById("editHargaSatuan").value = harga;
 
-        // Simpan referensi baris tabel untuk pembaruan nanti
         editBahanModal.dataset.rowIndex = row.rowIndex;
       });
 
@@ -290,14 +286,12 @@
       simpanBtn.addEventListener("click", function () {
         const rowIndex = editBahanModal.dataset.rowIndex;
 
-        // Ambil nilai baru dari form
         const jenisBaru = document.getElementById("editJenisBahan").value;
         const namaBaru = document.getElementById("editNamaBahan").value;
         const satuanBaru = document.getElementById("editSatuan").value;
         const jumlahBaru = document.getElementById("editJumlah").value;
         const hargaBaru = document.getElementById("editHargaSatuan").value;
 
-        // Update data di tabel secara visual
         const table = document.querySelector(".table");
         const rowToUpdate = table.rows[rowIndex];
         rowToUpdate.cells[1].textContent = jenisBaru;
@@ -306,13 +300,11 @@
         rowToUpdate.cells[4].textContent = jumlahBaru;
         rowToUpdate.cells[5].textContent = hargaBaru;
 
-        // Tutup modal
         const modalInstance = bootstrap.Modal.getInstance(editBahanModal);
         modalInstance.hide();
       });
     }
 
-    // --- LOGIKA UNTUK HAPUS (Reusable) ---
     const hapusModal = document.getElementById("hapusModal");
     if (hapusModal) {
       let rowToDelete = null;
